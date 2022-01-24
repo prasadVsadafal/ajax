@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/color/jquery.color-2.2.0.js" integrity="sha256-gvMJWDHjgDrVSiN6eBI9h7dRfQmsTTsGU/eTT8vpzNg=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        enter name:<input type="text" id="country">
+        <button id="btn">Submit</button>
+        <div id="capital"></div>
+    </div>
+
+</body>
+<script >
+    $(document).ready(function(){
+
+        $("#btn").click(function(){
+            var countryName=$ ("#country").val()
+            console.log(countryName)
+
+            var url="https://restcountries.com/v3.1/name/"+countryName+"?fullText=true"
+            $.ajax({
+                "url":url,
+                "success":function(output)
+                {
+                    var mycapital=output[0].capital 
+                    $("#capital").html(mycapital)               }
+            })
+        })
+
+    })
+</script>
+</html>
